@@ -18,36 +18,41 @@ function Products() {
       `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
     );
     const data = await response.json();
-
-    if (data && data.products) {
-      const products = await Promise.all(
-        data.products.map(async (product: Product) => {
-          const productResponse = await fetch(
-            `https://dummyjson.com/products/${product.id}`
-          );
-          const productData = await productResponse.json();
-
-          return {
-            ...product,
-            thumbnail: productData.thumbnail,
-          };
-        })
-      );
-
-      return products;
-    } else {
-      return [];
-    }
+    console.log("api 1", skip);
+    const products = await Promise.all(
+      data.products.map(async (product: Product) => {
+        const productResponse = await fetch(
+          `https://dummyjson.com/products/${product.id}`
+        );
+        const productData = await productResponse.json();
+        console.log(product.id);
+        return {
+          ...product,
+          thumbnail: productData.thumbnail,
+        };
+      })
+    );
+    return products;
   }, [skip]);
 
   function loadMoreProducts() {
-    setSkip((skip) => skip + limit);
+    setSkip((prevSkip) => prevSkip + limit);
+    console.log("load more data");
   }
 
   useEffect(() => {
+    console.log("use effect");
     fetchProducts()
       .then((newProducts) => {
-        setProducts((prevProducts) => [...prevProducts, ...newProducts]);
+        setProducts((prevProducts) => {
+          const currentProductIds = new Set(
+            prevProducts.map((product) => product.id)
+          );
+          const newUniqueProducts = newProducts.filter(
+            (product) => !currentProductIds.has(product.id)
+          );
+          return [...prevProducts, ...newUniqueProducts];
+        });
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
