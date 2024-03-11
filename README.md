@@ -15,7 +15,7 @@ To run this application locally, follow these steps:
 1. Clone the repository to your local machine:
 
 ```
-git clone https://github.com/your_username/infinite-scroll-products-list.git
+git clone https://github.com/Huyen0402/Infinite-Scrolling.git
 ```
 
 2. Navigate to the project directory:
@@ -53,6 +53,5 @@ npm start
 
 ## Credits
 
-- This project is created by [Your Name].
 - Dummy product data is fetched from [DummyJSON](https://dummyjson.com/).
-- Infinite scroll functionality is implemented using [react-infinite-scroll-component](http
+- Infinite scroll functionality is implemented using [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component).
