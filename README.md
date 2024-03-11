@@ -16,7 +16,7 @@ To run this application locally, follow these steps:
 1. Clone the repository to your local machine:
 
 ```
-git clone https://github.com/your_username/infinite-scroll-products-list.git
+git clone https://github.com/Huyen0402/Infinite-Scrolling.git
 ```
 
 2. Navigate to the project directory:
