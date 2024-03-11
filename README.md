@@ -7,6 +7,7 @@ This is a React application that displays a list of products using an infinite s
 - Display a list of products with title, price, and thumbnail.
 - Implement infinite scroll to load more products dynamically.
 - Fetch product data from a dummy API.
+- Search products by entering keywords
 
 ## Installation
 
