@@ -1,15 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Product from "../../component/Product";
 
-interface Product {
+interface ProductProps {
   id: number;
   title: string;
   price: number;
   thumbnail: string;
 }
 
-function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
+const ProductsList: React.FC = () => {
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [skip, setSkip] = useState(0);
   const limit = 20;
 
@@ -18,9 +19,9 @@ function Products() {
       `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
     );
     const data = await response.json();
-    console.log("api 1", skip);
+    //console.log("api 1", skip);
     const products = await Promise.all(
-      data.products.map(async (product: Product) => {
+      data.products.map(async (product: ProductProps) => {
         const productResponse = await fetch(
           `https://dummyjson.com/products/${product.id}`
         );
@@ -37,11 +38,11 @@ function Products() {
 
   function loadMoreProducts() {
     setSkip((prevSkip) => prevSkip + limit);
-    console.log("load more data");
+    //console.log("load more data");
   }
 
   useEffect(() => {
-    console.log("use effect");
+    //console.log("use effect");
     fetchProducts()
       .then((newProducts) => {
         setProducts((prevProducts) => {
@@ -61,37 +62,32 @@ function Products() {
 
   return (
     <div className="">
-      <h1 className="uppercase text-4xl font-bold">Products List</h1>
+      <h1 className="uppercase text-4xl font-bold m-4">Products List</h1>
       <InfiniteScroll
         dataLength={products.length}
         next={loadMoreProducts}
         hasMore={products.length < 100}
-        loader={<h4 className="text-blue-800 uppercase mt-2">Loading...</h4>}
+        loader={
+          <h4 className="text-blue-800 uppercase mt-2 mb-4">Loading...</h4>
+        }
         endMessage={
-          <h3 className="text-red-800 uppercase mt-2 font-bold">
+          <h3 className="text-red-800 uppercase mt-2 mb-4 font-bold">
             No more products to load!
           </h3>
         }
       >
         {products.map((product, index) => (
-          <div
+          <Product
             key={`product.id-${index}`}
-            className="w-1/5 inline-block m-4 mt-8 border-solid border rounded-lg"
-          >
-            <div className="relative h-60 border-b rounded-lg">
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-                className="absolute h-full object-cover"
-              />
-            </div>
-            <h3 className="mt-4 mb-4 font-serif text-lg">{product.id}</h3>
-            <p className="font-bold text-red-500">{`Price: $${product.price}`}</p>
-          </div>
+            id={product.id}
+            title={product.title}
+            price={product.price}
+            thumbnail={product.thumbnail}
+          />
         ))}
       </InfiniteScroll>
     </div>
   );
-}
+};
 
-export default Products;
+export default ProductsList;
