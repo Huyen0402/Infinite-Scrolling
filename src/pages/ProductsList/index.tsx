@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Product from "../../component/Product";
+import { Link } from "react-router-dom";
 
 interface ProductProps {
   id: number;
@@ -62,7 +63,17 @@ const ProductsList: React.FC = () => {
 
   return (
     <div className="">
-      <h1 className="uppercase text-4xl font-bold m-4">Products List</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="uppercase text-4xl font-bold m-4 flex-grow text-center">
+          Products List
+        </h1>
+        <Link
+          to="/products/search"
+          className="bg-indigo-500 hover:bg-indigo-600 text-white py-3 px-6 rounded-md text-lg"
+        >
+          Search Products
+        </Link>
+      </div>
       <InfiniteScroll
         dataLength={products.length}
         next={loadMoreProducts}

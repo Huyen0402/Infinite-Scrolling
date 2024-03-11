@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Infinite Scroll Products List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React application that displays a list of products using an infinite scroll feature. It fetches product data from a dummy API and dynamically loads more products as the user scrolls down the page.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Display a list of products with title, price, and thumbnail.
+- Implement infinite scroll to load more products dynamically.
+- Fetch product data from a dummy API.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run this application locally, follow these steps:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone the repository to your local machine:
 
-### `npm test`
+```
+git clone https://github.com/your_username/infinite-scroll-products-list.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory:
 
-### `npm run build`
+```
+cd infinite-scroll-products-list
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server:
 
-### `npm run eject`
+```
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. Open your browser and visit `http://localhost:3000` to view the application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Scroll down the page to load more products dynamically.
+- Products will be fetched from the dummy API in batches as you scroll.
+- The application displays a loading indicator while fetching data and notifies the user when there are no more products to load.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Technologies Used
 
-## Learn More
+- React.js
+- react-infinite-scroll-component
+- TypeScript
+- CSS (Tailwind CSS)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This project is created by [Your Name].
+- Dummy product data is fetched from [DummyJSON](https://dummyjson.com/).
+- Infinite scroll functionality is implemented using [react-infinite-scroll-component](http
